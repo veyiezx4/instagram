@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram User Info</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            padding: 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #4caf50;
+        }
+        button[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button[type="button"]:hover {
+            background-color: #45a049;
+        }
+        .user-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .gif-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .info-container {
+            text-align: left;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .image {
+            margin: 20px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        .profile-image {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            border: 2px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #f1f1f1;
+        }
+        .dark-mode .container {
+            background-color: #444;
+        }
+        .dark-mode .section {
+            background-color: #555;
+        }
+        .dark-mode input[type="text"], .dark-mode input[type="password"] {
+            background-color: #666;
+            border-color: #888;
+            color: #fff;
+        }
+        .dark-mode input[type="text"]:focus, .dark-mode input[type="password"]:focus {
+            border-color: #4caf50;
+        }
+        .dark-mode button[type="button"] {
+            background-color: #4caf50;
+        }
+        .dark-mode button[type="button"]:hover {
+            background-color: #45a049;
+        }
+        .vip-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .vip-button:hover {
+            background-color: #45a049;
+        }
+        .telegram-link {
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #0088cc;
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .telegram-link:hover {
+            background-color: #007ab8;
+        }
+    </style>
+    <script>
+        function getUserInfo(targetId) {
+            var username = document.getElementById(targetId === 'general' ? 'generalUsername' : targetId === 'premium' ? 'premiumUsername' : 'vipPremiumUsername').value;
+            var license = targetId === 'premium' || targetId === 'vipPremium' ? document.getElementById(targetId === 'premium' ? 'premiumLicense' : 'vipPremiumLicense').value : '';
+            var userInfoDiv = document.getElementById(targetId + 'Info');
+
+            if ((targetId === 'premium' || targetId === 'vipPremium') && license !== 'ahmet2026') {
+                userInfoDiv.innerHTML = `<p>Geçersiz lisans anahtarı. Lütfen ücretli lisans anahtarını doğru giriniz.</p>`;
+                return;
+            }
+
+            if (targetId === 'vipPremium' && username === 'yusufayhanx1') {
+                userInfoDiv.innerHTML = `
+                    <img src="https://i.hizliresim.com/qbgqoqt.jpg" alt="Profile Image" class="profile-image">
+                    <h2>${username}</h2>
+                    <p>0 gönderi</p>
+                    <p>39,4 B takipçi</p>
+                    <p>0 takip</p>
+                    <p>Yazılım Şirketi</p>
+                    <p>7/24 aktif 💬</p>
+                    <p>Master Software Developer</p>
+                    <p>Lütfen Telegram'dan yazın: <a href="https://t.me/ayhanx1">t.me/ayhanx1</a></p>
+                   
+                    <div class="image">
+                        <img src="https://i.hizliresim.com/smmf7i7.png" alt="Post Image">
+                    </div>
+                    <div class="image">
+                        <a href="https://s6.dosya.tc/server17/0p00r6/e_spor.zip.html">Gizli Mesajlar Ve Daha Fazlası</a>
+                    </div>
+                `;
+            } else if (targetId === 'premium' && username === 'yusufayhanx1') {
+                userInfoDiv.innerHTML = `
+                    <img src="https://i.hizliresim.com/qbgqoqt.jpg" alt="Profile Image" class="profile-image">
+                    <h2>${username}</h2>
+                    <p>0 gönderi</p>
+                    <p>39,4 B takipçi</p>
+                    <p>0 takip</p>
+                    <p>Yazılım Şirketi</p>
+                    <p>7/24 aktif 💬</p>
+                    <p>Master Software Developer</p>
+                    <p>Lütfen Telegram'dan yazın: <a href="https://t.me/ayhanx1">t.me/ayhanx1</a></p>
+                  
+                    <div class="image">
+                        <img src="https://i.hizliresim.com/74hjerj.jpg" alt="Image 1">
+                    </div>
+                    <div class="image">
+                        <img src="https://i.hizliresim.com/ek59jhn.jpg" alt="Image 2">
+                    </div>
+                    <div class="image">
+                        <img src="https://i.hizliresim.com/cxp50gs.jpg" alt="Image 3">
+                    </div>
+                `;
+            } else {
+                // Instagram embed kodunu oluştur
+                var instagramEmbedCode = '<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/' + username + '/" data-instgrm-version="13"></blockquote>';
+                
+                // Kullanıcı bilgisi bölümünü güncelle
+                userInfoDiv.innerHTML = instagramEmbedCode;
+                
+                // Instagram embed kodunu çalıştır
+                if (window.instgrm && window.instgrm.Embeds) {
+                    window.instgrm.Embeds.process();
+                } else {
+                    // Instagram embed scriptini yükle
+                    var script = document.createElement('script');
+                    script.src = 'https://www.instagram.com/embed.js';
+                    document.body.appendChild(script);
+                }
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <!-- Herkese Açık Sorgu Bölümü -->
+    <div class="section">
+        <h1>Herkese Açık Sorgu</h1>
+        <form id="generalUsernameForm">
+            <div class="form-group">
+                <label for="generalUsername">Kullanıcı Adı:</label>
+                <input type="text" id="generalUsername" name="username" required>
+            </div>
+            <button type="button" onclick="getUserInfo('general')">Gönder</button>
+        </form>
+        <div class="user-info" id="generalInfo"></div>
+    </div>
+
+    <!-- Premium Sorgu Bölümü -->
+    <div class="section">
+        <h1>Premium Sorgu</h1>
+        <form id="premiumUsernameForm">
+            <div class="form-group">
+                <label for="premiumUsername">Kullanıcı Adı:</label>
+                <input type="text" id="premiumUsername" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="premiumLicense">Ücretli Lisans Anahtarı:</label>
+                <input type="password" id="premiumLicense" name="license" required>
+            </div>
+            <button type="button" onclick="getUserInfo('premium')">Lisans ile Gönder</button>
+        </form>
+        <div class="user-info" id="premiumInfo"></div>
+    </div>
+
+    <!-- VIP Premium Sorgu Bölümü -->
+    <div class="section">
+        <h1>VIP Premium Sorgu</h1>
+        <form id="vipPremiumUsernameForm">
+            <div class="form-group">
+                <label for="vipPremiumUsername">Kullanıcı Adı:</label>
+                <input type="text" id="vipPremiumUsername" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="vipPremiumLicense">VIP Lisans Anahtarı:</label>
+                <input type="password" id="vipPremiumLicense" name="license" required>
+            </div>
+            <button type="button" onclick="getUserInfo('vipPremium')">VIP Lisans ile Gönder</button>
+        </form>
+        <div class="user-info" id="vipPremiumInfo"></div>
+    </div>
+</div>
+
+<!-- Dark Mode Toggle Button -->
+<div style="text-align: center; margin-top: 20px;">
+    <button type="button" onclick="toggleDarkMode()">Dark Mode</button>
+</div>
+
+<!-- Eklenmiş GIF -->
+<div class="gif-container">
+    <img src="https://www.yzlm.com.tr/wp-content/uploads/2023/05/1-instagram.gif" alt="Instagram GIF" style="max-width: 100%; height: auto;">
+</div>
+
+<!-- VIP Anahtar Satın Al Butonu -->
+<a href="#" class="vip-button">VIP Anahtar Satın Al</a>
+
+<!-- Telegram Link -->
+<a href="https://t.me/ayhanx1" class="telegram-link">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo" style="width: 20px; vertical-align: middle;">
+    Telegram'dan Yazın
+</a>
+
+</body>
+</html>
